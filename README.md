@@ -1,52 +1,27 @@
 fig-oclif-plugin
 ================
 
-Export fig completion spec using oclif internal representation
+Export a Fig completion spec generated using the oclif internal representation.
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/fig-oclif-plugin.svg)](https://npmjs.org/package/fig-oclif-plugin)
-[![Downloads/week](https://img.shields.io/npm/dw/fig-oclif-plugin.svg)](https://npmjs.org/package/fig-oclif-plugin)
-[![License](https://img.shields.io/npm/l/fig-oclif-plugin.svg)](https://github.com/mattschrage/fig-oclif-plugin/blob/master/package.json)
 
-<!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
-# Usage
-<!-- usage -->
-```sh-session
-$ npm install -g fig-oclif-plugin
-$ oclif-example COMMAND
-running command...
-$ oclif-example (-v|--version|version)
-fig-oclif-plugin/0.0.0 darwin-x64 node-v15.12.0
-$ oclif-example --help [COMMAND]
-USAGE
-  $ oclif-example COMMAND
-...
-```
-<!-- usagestop -->
-# Commands
-<!-- commands -->
-* [`oclif-example hello [FILE]`](#oclif-example-hello-file)
+# Setup
 
-## `oclif-example hello [FILE]`
+1. Add the [@oclif/plugins-plugin](https://github.com/oclif/plugin-plugins). (This is only necessary for developement and does not need to be included in production).
+> First add the plugin to your project with `yarn add @oclif/plugin-plugins`, then add it to the package.json of the oclif CLI:
+>
+> ```json
+> {
+>  "name": "mycli",
+>  "version": "0.0.0",
+>  "oclif": {
+>    "plugins": ["@oclif/plugin-help", "@oclif/plugin-plugins"]
+>  }
+> }
+> ```
 
-describe the command here
+2. Clone this repo and then inside of it run `your-cli-name plugins:link`. This will add the `fig-completion` command to `your-cli-name`.
 
-```
-USAGE
-  $ oclif-example hello [FILE]
+3. Run `your-cli-name fig-completion -o output-file-name`. (The correct file extension will be added automatically)
 
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
 
-EXAMPLE
-  $ oclif-example hello
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src/commands/hello.ts](https://github.com/mattschrage/fig-oclif-plugin/blob/v0.0.0/src/commands/hello.ts)_
-<!-- commandsstop -->
