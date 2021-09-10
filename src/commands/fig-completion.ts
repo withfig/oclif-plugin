@@ -87,9 +87,9 @@ export default class FigCompletionsCommand extends Command {
     // this.log(string)
 
     let saveJsonAsSpec = (json: any, path: string, exportTypescript: boolean = flags.lang == "ts") => {
-      let prefix = exportTypescript ? 'export const completionSpec: Fig.Spec =' : 'var completionSpec ='
+      let prefix = exportTypescript ? 'const completionSpec: Fig.Spec =' : 'var completionSpec ='
       let extension = exportTypescript ? '.ts' : '.js'
-      let final = `${prefix} ${JSON.stringify(json, null, 4)}`
+      let final = `${prefix} ${JSON.stringify(json, null, 4)} export default completionSpec`
       fs.writeFileSync(path + extension, final)
     }
 
